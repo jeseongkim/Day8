@@ -2,6 +2,22 @@
 #include "SimilarityChecker.cpp"
 using namespace testing;
 
+class SimilarityCheckerFixture : public Test {
+public:
+	SimilarityChecker checker;
+
+	void checkLengthTest(string leftStr, string rightStr, double expected) {
+		EXPECT_EQ(expected, checker.getLengthResult(leftStr, rightStr));
+	}
+
+};
+
+TEST_F(SimilarityCheckerFixture, LengthCheck){
+	checkLengthTest("ABC", "ABC", 60);	
+	checkLengthTest("ABC", "EF", 30);	
+	checkLengthTest("ABC", "", 0);
+}
+
 int main() {
 	testing::InitGoogleMock();
 
