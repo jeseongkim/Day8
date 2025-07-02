@@ -17,16 +17,17 @@ public:
     double getAlphaResult(const string leftStr, const string rightStr){
         if (isInInvalidChar(leftStr, rightStr)) return 0;
 
-        set<char> l;
-        for (char ch : leftStr) l.insert(ch);
-
-        set<char> r;
-        for (char ch : rightStr) r.insert(ch);
-
-        if (l == r) return 40;
+        set<char> leftchars = getCharSet(leftStr);
+        set<char> rightchars = getCharSet(rightStr);
+        if (leftchars == rightchars) return MAX_ALPHA_SCORE;
     }
 
 private:
+    set<char> getCharSet(string str) {
+        set<char> result;
+        for (char ch : str) result.insert(ch);
+        return result;
+    }
 
     bool isInInvalidChar(const string leftStr, const string rightStr) {
         for (auto ch : leftStr) {
@@ -54,5 +55,7 @@ private:
         if (rightStr.length() == 0) return true;
         return false;
     }
+
     const double MAX_LENGTH_SCORE = 60;
+    const double MAX_ALPHA_SCORE = 40;
 };
