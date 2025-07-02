@@ -6,8 +6,16 @@ TEST(SimilarityChecker, SameLength){
 	SimilarityChecker checker;
 	string leftStr = "ABC";
 	string rightStr = "DEF";
-	int result = checker.getLengthResult(leftStr, rightStr);
+	double result = checker.getLengthResult(leftStr, rightStr);
 	EXPECT_EQ(60, result);
+}
+
+TEST(SimilarityChecker, PartialLength){
+	SimilarityChecker checker;
+	string leftStr = "ABC";
+	string rightStr = "EF";
+	double result = checker.getLengthResult(leftStr, rightStr);
+	EXPECT_EQ(30, result);
 }
 
 
