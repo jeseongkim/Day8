@@ -13,6 +13,15 @@ public:
         return MAX_LENGTH_SCORE * getPartialLengthScore(leftStr, rightStr);
     }
 
+    double getAlphaResult(const string leftStr, const string rightStr){
+        for(auto ch : leftStr){
+            if(ch < 'A' || ch > 'Z') return 0;
+        }
+        for(auto ch : rightStr){
+            if(ch < 'A' || ch > 'Z') return 0;
+        }
+    }
+
 private:
     double getPartialLengthScore(const string leftStr, const string rightStr) {
         double gap = abs( static_cast<int>(leftStr.length() - rightStr.length()) );
