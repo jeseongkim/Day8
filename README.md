@@ -1,3 +1,4 @@
 # Day8
 
-Prime-Factors
+- [tdd] Prime-Factors
+- [tdd] Baseball Kata
