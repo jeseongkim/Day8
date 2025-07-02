@@ -23,6 +23,14 @@ public:
 		EXPECT_EQ(2, result.strikes);
 		EXPECT_EQ(0, result.balls);	
 	}
+
+	void check1Stirkes2Ball(string guessNumber){
+		GuessResult result = game.guess(guessNumber);
+
+		EXPECT_FALSE(result.solved);
+		EXPECT_EQ(1, result.strikes);
+		EXPECT_EQ(2, result.balls);	
+	}
 };
 
 TEST_F(BaseballFixture, ThrowExceptionWhenInvalidCase){
@@ -42,6 +50,11 @@ TEST_F(BaseballFixture, ReturnSolvedResultIfMatchedNumber){
 TEST_F(BaseballFixture, Strike2Ball0){
 	check2Stirkes0Ball("129");
 	check2Stirkes0Ball("423");
+}
+
+TEST_F(BaseballFixture, Strike1Ball2){
+	check1Stirkes2Ball("132");
+	check1Stirkes2Ball("321");
 }
 
 int main() {

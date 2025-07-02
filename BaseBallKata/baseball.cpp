@@ -22,7 +22,15 @@ public:
 		int strikes = getStrikes(guessNumber);
         if(strikes == 3) return {true, strikes, 0};
 
-		return { false, strikes, 0 };
+        int balls = 0;
+		for (int i = 0; i < guessNumber.length(); i++) {
+            for (int j = 0; j < guessNumber.length(); j++) {
+                if(i==j) continue;
+                if (guessNumber[i] == question[j]) balls++;
+            }
+		}
+
+		return { false, strikes, balls };
 	}
 
     int getStrikes(string guessNumber){
