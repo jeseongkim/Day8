@@ -18,7 +18,11 @@ private:
         double gap = abs( static_cast<int>(leftStr.length() - rightStr.length()) );
         double minlength = min(leftStr.length(), rightStr.length());
 
-        return 1- static_cast<double> (gap / minlength);
+        return getPartialScore(gap, minlength);
+    }
+ 
+    double getPartialScore(double gap, double minlength){
+        return 1 - (gap / minlength);
     }
 
     bool isZeroLengthArgs(const string leftStr, const string rightStr) {
