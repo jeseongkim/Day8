@@ -12,22 +12,10 @@ public:
 
 };
 
-TEST_F(SimilarityCheckerFixture, SameLength){
-	string leftStr = "ABC";
-	string rightStr = "DEF";
-	checkLengthTest(leftStr, rightStr, 60);	
-}
-
-TEST_F(SimilarityCheckerFixture, PartialLength){
-	string leftStr = "ABC";
-	string rightStr = "EF";
-	checkLengthTest(leftStr, rightStr, 30);	
-}
-
-TEST_F(SimilarityCheckerFixture, ZeroLength){
-	string leftStr = "ABC";
-	string rightStr = "";
-	checkLengthTest(leftStr, rightStr, 0);
+TEST_F(SimilarityCheckerFixture, LengthCheck){
+	checkLengthTest("ABC", "ABC", 60);	
+	checkLengthTest("ABC", "EF", 30);	
+	checkLengthTest("ABC", "", 0);
 }
 
 int main() {

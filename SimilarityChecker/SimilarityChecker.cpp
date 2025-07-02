@@ -13,6 +13,7 @@ public:
         return MAX_LENGTH_SCORE * getPartialLengthScore(leftStr, rightStr);
     }
 
+private:
     double getPartialLengthScore(const string leftStr, const string rightStr) {
         double gap = abs( static_cast<int>(leftStr.length() - rightStr.length()) );
         double minlength = min(leftStr.length(), rightStr.length());
