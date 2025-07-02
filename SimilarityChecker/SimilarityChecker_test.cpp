@@ -2,28 +2,32 @@
 #include "SimilarityChecker.cpp"
 using namespace testing;
 
-TEST(SimilarityChecker, SameLength){
+class SimilarityCheckerFixture : public Test {
+public:
 	SimilarityChecker checker;
+
+	void checkLengthTest(string leftStr, string rightStr, double expected) {
+		EXPECT_EQ(expected, checker.getLengthResult(leftStr, rightStr));
+	}
+
+};
+
+TEST_F(SimilarityCheckerFixture, SameLength){
 	string leftStr = "ABC";
 	string rightStr = "DEF";
-	double result = checker.getLengthResult(leftStr, rightStr);
-	EXPECT_EQ(60, result);
+	checkLengthTest(leftStr, rightStr, 60);	
 }
 
-TEST(SimilarityChecker, PartialLength){
-	SimilarityChecker checker;
+TEST_F(SimilarityCheckerFixture, PartialLength){
 	string leftStr = "ABC";
 	string rightStr = "EF";
-	double result = checker.getLengthResult(leftStr, rightStr);
-	EXPECT_EQ(30, result);
+	checkLengthTest(leftStr, rightStr, 30);	
 }
 
-TEST(SimilarityChecker, ZeroLength){
-	SimilarityChecker checker;
+TEST_F(SimilarityCheckerFixture, ZeroLength){
 	string leftStr = "ABC";
 	string rightStr = "";
-	double result = checker.getLengthResult(leftStr, rightStr);
-	EXPECT_EQ(0, result);
+	checkLengthTest(leftStr, rightStr, 0);
 }
 
 int main() {
