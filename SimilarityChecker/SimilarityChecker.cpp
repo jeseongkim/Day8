@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include<iostream>
 #include<cmath>
+#include<set>
 using namespace std;
 
 class SimilarityChecker {
@@ -15,6 +16,14 @@ public:
 
     double getAlphaResult(const string leftStr, const string rightStr){
         if (isInInvalidChar(leftStr, rightStr)) return 0;
+
+        set<char> l;
+        for (char ch : leftStr) l.insert(ch);
+
+        set<char> r;
+        for (char ch : rightStr) r.insert(ch);
+
+        if (l == r) return 40;
     }
 
 private:

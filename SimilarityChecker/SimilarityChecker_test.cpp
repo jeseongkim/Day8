@@ -26,6 +26,10 @@ TEST_F(SimilarityCheckerFixture, InvalidStr){
 	checkAlphaTest("?><", "ABC", 0);
 }
 
+TEST_F(SimilarityCheckerFixture, SameAlpha){
+	checkAlphaTest("AB", "BA", 40);
+}
+
 int main() {
 	testing::InitGoogleMock();
 
