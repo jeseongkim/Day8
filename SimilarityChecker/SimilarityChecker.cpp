@@ -14,15 +14,21 @@ public:
     }
 
     double getAlphaResult(const string leftStr, const string rightStr){
-        for(auto ch : leftStr){
-            if(ch < 'A' || ch > 'Z') return 0;
-        }
-        for(auto ch : rightStr){
-            if(ch < 'A' || ch > 'Z') return 0;
-        }
+        if (isInInvalidChar(leftStr, rightStr)) return 0;
     }
 
 private:
+
+    bool isInInvalidChar(const string leftStr, const string rightStr) {
+        for (auto ch : leftStr) {
+            if (ch < 'A' || ch > 'Z') return true;
+        }
+        for (auto ch : rightStr) {
+            if (ch < 'A' || ch > 'Z') return true;
+        }
+        return false;
+    }
+
     double getPartialLengthScore(const string leftStr, const string rightStr) {
         double gap = abs( static_cast<int>(leftStr.length() - rightStr.length()) );
         double minlength = min(leftStr.length(), rightStr.length());
