@@ -5,7 +5,7 @@ using namespace testing;
 class BaseballFixture : public Test {
 public:
 	Baseball game;
-	void assetIllegalArgument(string guessNumber) {
+	void assertIllegalArgument(string guessNumber) {
 		try {
 			game.guess(string(guessNumber));
 			FAIL();
@@ -17,9 +17,9 @@ public:
 };
 
 TEST_F(BaseballFixture, ThrowExceptionWhenInvalidCase){
-	assetIllegalArgument("12");
-	assetIllegalArgument("12s");
-	assetIllegalArgument("121");
+	assertIllegalArgument("12");
+	assertIllegalArgument("12s");
+	assertIllegalArgument("121");
 }
 
 int main() {
