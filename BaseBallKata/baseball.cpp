@@ -19,14 +19,19 @@ public:
 			return { true, 3, 0 };
 		}
 
-		int strikes = 0;
-		for (int i = 0; i < guessNumber.length(); i++) {
-			if (guessNumber[i] == question[i]) strikes++;
-		}
-
+		int strikes = getStrikes(guessNumber);
+        if(strikes == 3) return {true, strikes, 0};
 
 		return { false, strikes, 0 };
 	}
+
+    int getStrikes(string guessNumber){
+		int result = 0;
+		for (int i = 0; i < guessNumber.length(); i++) {
+			if (guessNumber[i] == question[i]) result++;
+		}
+        return result;
+    }
 
 	void assertIllegalArgument(string guessNumber) {
 		if (guessNumber.length() != 3) {
