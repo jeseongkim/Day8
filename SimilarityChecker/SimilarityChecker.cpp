@@ -6,6 +6,8 @@ using namespace std;
 class SimilarityChecker {
 public:
     double getLengthResult(const string leftStr, const string rightStr) {
+        if (leftStr.length() == 0) return 0;
+        if (rightStr.length() == 0) return 0;
         if (leftStr.length() == rightStr.length()) return MAX_LENGTH_SCORE;
 
         double partialScoreRate = getPartialLengthScore(leftStr, rightStr);

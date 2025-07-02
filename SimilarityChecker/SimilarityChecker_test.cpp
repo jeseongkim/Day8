@@ -18,7 +18,13 @@ TEST(SimilarityChecker, PartialLength){
 	EXPECT_EQ(30, result);
 }
 
-
+TEST(SimilarityChecker, ZeroLength){
+	SimilarityChecker checker;
+	string leftStr = "ABC";
+	string rightStr = "";
+	double result = checker.getLengthResult(leftStr, rightStr);
+	EXPECT_EQ(0, result);
+}
 
 int main() {
 	testing::InitGoogleMock();
