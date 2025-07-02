@@ -1,5 +1,6 @@
 #include "gmock/gmock.h"
 #include "Baseball.cpp"
+#include <iostream>
 
 using namespace testing;
 class BaseballFixture : public Test {
@@ -28,6 +29,20 @@ TEST_F(BaseballFixture, ReturnSolvedResultIfMatchedNumber){
 	EXPECT_TRUE(result.solved);
 	EXPECT_EQ(3, result.strikes);
 	EXPECT_EQ(0, result.balls);	
+}
+
+TEST_F(BaseballFixture, Strike2Ball0TC1){
+	GuessResult result = game.guess("129");
+	EXPECT_FALSE(result.solved);
+	EXPECT_EQ(2, result.strikes);
+	EXPECT_EQ(0, result.balls);	
+}
+
+TEST_F(BaseballFixture, Strike2Ball0TC2) {
+	GuessResult result = game.guess("423");
+	EXPECT_FALSE(result.solved);
+	EXPECT_EQ(2, result.strikes);
+	EXPECT_EQ(0, result.balls);
 }
 
 
