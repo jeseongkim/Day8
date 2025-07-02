@@ -20,26 +20,10 @@ public:
 		}
 
 		int strikes = getStrikes(guessNumber);
-        if(strikes == 3) return {true, strikes, 0};
-
-        int balls = 0;
-		for (int i = 0; i < guessNumber.length(); i++) {
-            for (int j = 0; j < guessNumber.length(); j++) {
-                if(i==j) continue;
-                if (guessNumber[i] == question[j]) balls++;
-            }
-		}
+        int balls = getBalls(guessNumber);
 
 		return { false, strikes, balls };
 	}
-
-    int getStrikes(string guessNumber){
-		int result = 0;
-		for (int i = 0; i < guessNumber.length(); i++) {
-			if (guessNumber[i] == question[i]) result++;
-		}
-        return result;
-    }
 
 	void assertIllegalArgument(string guessNumber) {
 		if (guessNumber.length() != 3) {
@@ -55,9 +39,30 @@ public:
 			throw invalid_argument("Must not have same number");
 		}
 	}
+
 	bool isDuplicateNumber(string guessNumber) {
 		return guessNumber[0] == guessNumber[1] || guessNumber[0] == guessNumber[2] || guessNumber[1] == guessNumber[2];
 	}
+
+	int getStrikes(string guessNumber) {
+		int result = 0;
+		for (int i = 0; i < guessNumber.length(); i++) {
+			if (guessNumber[i] == question[i]) result++;
+		}
+		return result;
+	}
+
+    int getBalls(string guessNumber){
+        int result = 0;
+        for (int i = 0; i < guessNumber.length(); i++) {
+            for (int j = 0; j < guessNumber.length(); j++) {
+                if(i==j) continue;
+                if (guessNumber[i] == question[j]) result++;
+            }
+		}
+        return result;
+    }
+
 private:
 	string question;
 };
