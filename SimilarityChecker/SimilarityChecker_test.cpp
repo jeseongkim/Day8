@@ -3,12 +3,14 @@
 using namespace testing;
 
 TEST(SimilarityChecker, SameLength){
-	SimilarityChecker s;
-	string A = "ABC";
-	string B = "DEF";
-	int result = s.getLengthResult(A, B);
+	SimilarityChecker checker;
+	string leftStr = "ABC";
+	string rightStr = "DEF";
+	int result = checker.getLengthResult(leftStr, rightStr);
 	EXPECT_EQ(60, result);
 }
+
+
 
 int main() {
 	testing::InitGoogleMock();
