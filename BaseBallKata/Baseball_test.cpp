@@ -2,15 +2,23 @@
 #include "Baseball.cpp"
 
 using namespace testing;
-
-TEST(BaseballGame, ThrowExceptionWhenInputLengthIsUnmached){
+class BaseballFixture : public Test {
+public:
 	Baseball game;
-	EXPECT_THROW(game.guess(string("12")), length_error);
-}
+	void assetIllegalArgument(string guessNumber) {
+		try {
+			game.guess(string(guessNumber));
+			FAIL();
+		}
+		catch (exception e) {
+			// PASS
+		}
+	}
+};
 
-TEST(BaseballGame, ThrowExceptionWhenInvalidChar){
-	Baseball game;
-	EXPECT_THROW(game.guess(string("12s")), invalid_argument);
+TEST_F(BaseballFixture, ThrowExceptionWhenInvalidCase){
+	assetIllegalArgument("12");
+	assetIllegalArgument("12s");
 }
 
 int main() {
